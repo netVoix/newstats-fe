@@ -1,4 +1,6 @@
-(ns newstats-fe.db)
+(ns newstats-fe.db
+  (:require [cljs.spec.alpha :as s]))
 
-(def default-db
-  {:name "re-frame"})
+(def initial-db {})
+
+(s/def ::db-spec (s/keys :req-un []))
