@@ -16,3 +16,5 @@
 
 /.clj-kondo/
 /.lsp/
+
+/package-lock.json
