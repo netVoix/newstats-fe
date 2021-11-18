@@ -5,13 +5,20 @@
    [kee-frame.error :as error]
    [newstats-fe.db :as db]
    [newstats-fe.views.main :as main]
-   [newstats-fe.events]))
+   [newstats-fe.events]
+   [newstats-fe.views.home :as home]
+   [newstats-fe.views.top :as top]
+   [newstats-fe.views.archieve :as archieve]
+   [newstats-fe.views.bans :as bans]))
 
 (goog-define debug false)
 
 (enable-console-print!)
 
-(def routes [["/" :home]])
+(def routes [["/" :home]
+             ["/top" :top]
+             ["/archieve" :archieve]
+             ["/bans" :bans]])
 
 (defn error-body [[err info]]
   (js/console.log "An error occurred: " info)
@@ -22,7 +29,10 @@
   [error/boundary
    error-body
    [k/case-route (comp :name :data)
-    :home [:div "This is home page"]
+    :home [home/view]
+    :top [top/view]
+    :archieve [archieve/view]
+    :bans [bans/view]
     [:div "Loading..."]]])
 
 (defn render! []
